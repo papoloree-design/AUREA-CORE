@@ -1,0 +1,1 @@
+class AureaCore{constructor(){console.log('△ AUREA CORE ∞ iniciado');}}document.addEventListener('DOMContentLoaded',()=>new AureaCore());
