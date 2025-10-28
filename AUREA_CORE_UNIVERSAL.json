@@ -1,6 +1,16 @@
 {
+  "project": "AUREA CORE \u221e \u2014 Local Mind v31.0",
+  "version": "31.0",
+  "bilingual": true,
   "did": "did:key:z6MkqJJGed65CynkoGNjnXjiBpseM8GNx7B8Ftv61kJtpZWj",
-  "cid": "bafybeihybym4idmmixzxk4rupbbrxa2iwbahseeztfloi6qvzjq6swenne",
-  "wallet": "8h4jvgTSSN6xeV6TPMMwCSdmStNdKYUrxhLSB2pBJNZM",
-  "created_at": "2025-10-28T19:52:52.893909Z"
+  "cid": "bafkreigsdwhplldyfdp245w3ij4jdodp3dadkghprhehhml3j5jtzss7nm",
+  "solana_wallet": "8h4jvgTSSN6xeV6TPMMwCSdmStNdKYUrxhLSB2pBJNZM",
+  "modules": [
+    "dialog-loop",
+    "reasoning-core",
+    "memory",
+    "resonance-engine",
+    "voice-interface"
+  ],
+  "created_at": "2025-10-28T20:24:57.321094Z"
 }
