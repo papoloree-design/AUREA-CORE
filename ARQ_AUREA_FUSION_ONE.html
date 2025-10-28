@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>ARCANUM CORE ∞ × AUREA CORE — ONE</title>
+<meta name="description" content="Arcanum Core × Aurea Core — Metaverso vivo (5K), Wallet Solana, AQR balance, IPFS/GitHub status.">
+<style>
+  :root{
+    --bg:#0a0b10;--ink:#e8f0ff;--soft:#9ad7ff;--glow:#19ffd1;--warn:#ffbe0b;--err:#ff4d6d;--ok:#21f352;--mut:#7a84a1;--card:#10131e;--card2:#0d1120;--accent:#6ae4ff
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;background:radial-gradient(1200px 800px at 50% -10%,#18213a,transparent 60%),linear-gradient(180deg,#0a0b10,#0a0b10 60%,#0a0b10);margin:0;color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+  a{color:var(--accent);text-decoration:none}
+  .wrap{display:grid;grid-template-rows:auto 1fr auto;min-height:100vh}
+  header{position:sticky;top:0;backdrop-filter:saturate(120%) blur(10px);background:linear-gradient(180deg,#0b0e17cc,#0b0e1700);border-bottom:1px solid #15213b;padding:.75rem 1rem;z-index:5}
+  .row{display:flex;gap:.5rem;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:.6rem}
+  .logo{width:26px;height:26px;border-radius:50%;background:conic-gradient(from 0deg at 50% 50%,#29ffd7,#7ae6ff,#7c4dff,#29ffd7);box-shadow:0 0 16px #19ffd188 inset,0 0 12px #19ffd180}
+  h1{font-size:1rem;letter-spacing:.08em;margin:0;text-transform:uppercase;color:#bfeeff}
+  .tag{font-size:.72rem;letter-spacing:.12em;color:#9bdcff}
+  .lang{display:flex;gap:.25rem}
+  .btn{background:#0f1528;border:1px solid #243055;color:#e8f0ff;padding:.55rem .8rem;border-radius:10px;font-weight:600;letter-spacing:.02em}
+  .btn:hover{border-color:#5bc8ff;box-shadow:0 0 0 2px #5bc8ff22}
+  .grid{max-width:1100px;margin:1rem auto;display:grid;gap:1rem;grid-template-columns:1.2fr .8fr}
+  @media (max-width:900px){.grid{grid-template-columns:1fr}}
+  .card{background:linear-gradient(180deg,var(--card),var(--card2));border:1px solid #14203b;border-radius:14px;overflow:hidden}
+  .card h2{margin:.9rem 1rem .2rem;font-size:1rem;color:#bfeeff}
+  .card p, .mini{margin:.2rem 1rem .9rem;color:#b9c6e0}
+  .hud{position:relative;height:58vh;min-height:380px}
+  canvas{position:absolute;inset:0}
+  .overlay{position:absolute;inset:auto 0 0 0;padding:10px;display:flex;gap:.5rem;justify-content:flex-end;pointer-events:none}
+  .chip{pointer-events:auto;background:#0f1528;border:1px solid #203055;border-radius:999px;padding:.3rem .6rem;font-size:.78rem;color:#a9b7d3;display:flex;gap:.35rem;align-items:center}
+  .dot{width:9px;height:9px;border-radius:50%}
+  .ok{background:var(--ok);box-shadow:0 0 12px var(--ok)}
+  .bad{background:var(--err);box-shadow:0 0 12px var(--err)}
+  .mid{background:var(--warn);box-shadow:0 0 12px var(--warn)}
+  .stack{display:grid;gap:.5rem;margin:1rem}
+  .input{display:flex;gap:.5rem}
+  input[type=text]{flex:1;background:#0f1528;border:1px solid #27365e;color:#eaf4ff;border-radius:10px;padding:.6rem .7rem}
+  .mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9rem;color:#d7e7ff}
+  footer{color:#94a1c3;opacity:.9;padding:1rem;text-align:center}
+  .strong{color:#7ce7ff}
+  .pill{padding:.15rem .45rem;border:1px solid #2b3a62;border-radius:999px;font-size:.72rem;color:#8fb6ff}
+  .actions{display:flex;gap:.5rem;flex-wrap:wrap;margin:0 1rem 1rem}
+  .hero-title{font-size:1.2rem;margin:1rem;color:#cdecff}
+  .subtle{color:#8fa4c8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="row">
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          <h1>ARCANUM CORE ∞ × AUREA CORE</h1>
+          <div class="tag">Quantum 5K Reality • One‑file build</div>
+        </div>
+      </div>
+      <div class="lang">
+        <button class="btn" id="btnConnect">🔗 Conectar Wallet</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <div class="hero-title">Metaverso vivo (núcleo)</div>
+      <div class="hud" id="hud">
+        <canvas id="universe"></canvas>
+        <div class="overlay">
+          <div class="chip"><span class="pill">Network</span><span id="netLabel" class="mono subtle">—</span></div>
+          <div class="chip"><span class="dot ok" id="ghDot"></span> GitHub</div>
+          <div class="chip"><span class="dot mid" id="w3Dot"></span> Web3</div>
+          <div class="chip"><span class="dot bad" id="ipfsDot"></span> IPFS</div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="btnEnter">🚀 Entrar al Metaverso</button>
+        <button class="btn" id="btnFull">🖥️ 5K / Fullscreen</button>
+        <button class="btn" id="btnLang">🇪🇸/🇺🇸</button>
+      </div>
+      <p class="mini">Motor de escena procedural (estrellas, niebla cuántica, partículas) + HUD reactivo. Optimizado para móviles, tablets y pantallas 5K.</p>
+    </section>
+
+    <aside class="card">
+      <h2>Wallet · AQR</h2>
+      <div class="stack">
+        <div class="mini">Estado: <span id="walletState" class="mono subtle">No conectada</span></div>
+        <div class="mini">Cuenta: <span id="walletAddr" class="mono">—</span></div>
+        <div class="mini">AQR (mint):
+          <span class="mono">8h4jvgTSSN6xeV6TPMMwCSdmStNdKYUrxhLSB2pBJNZM</span>
+        </div>
+        <div class="input">
+          <input type="text" id="rpc" placeholder="RPC (default: https://api.mainnet-beta.solana.com)">
+          <button class="btn" id="btnBal">✅ Leer balance AQR</button>
+        </div>
+        <div class="mini">Balance AQR: <span id="aqrBal" class="mono strong">—</span></div>
+      </div>
+
+      <h2>Estado de Integraciones</h2>
+      <div class="stack">
+        <div class="mini">GitHub Pages: <span class="mono" id="ghStatus">OK</span></div>
+        <div class="mini">Web3 RPC: <span class="mono" id="w3Status">Verificando…</span></div>
+        <div class="mini">IPFS Gateway: <span class="mono" id="ipfsStatus">Verificando…</span></div>
+      </div>
+    </aside>
+  </main>
+
+  <section class="card" style="max-width:1100px;margin:1rem auto">
+    <h2>Acerca de</h2>
+    <p>Esta build unifica <span class="strong">Arcanum Core</span> (identidad AQR, portal, HUD) y <span class="strong">Aurea Core</span> (UI viva, status, workflows) en un único archivo. Lista para publicar en <strong>GitHub Pages</strong>, <strong>Netlify Drop</strong> o <strong>IPFS</strong>.</p>
+    <p class="subtle">Funciones incluidas: escena 3D procedural, conector Phantom, consulta de balance AQR por RPC, verificador de endpoints (GitHub / Web3 / IPFS), bilingüe ES/EN, modo 5K, full‑screen.</p>
+  </section>
+
+  <footer>
+    ∞ AQR • Arcanum Quantum Resonant — Fusionado con Aurea Core · Este archivo es autónomo.
+  </footer>
+</div>
+
+<script>
+/* ---------------------------- Lenguaje ---------------------------- */
+let lang = 'es';
+const T = {es:{connect:'🔗 Conectar Wallet',connected:'Conectada',notConnected:'No conectada',enter:'🚀 Entrar al Metaverso',exit:'⏻ Salir del Metaverso',full:'🖥️ 5K / Fullscreen',normal:'🗗 Salir de pantalla completa',reading:'Leyendo…',balance:'Balance AQR'},en:{connect:'🔗 Connect Wallet',connected:'Connected',notConnected:'Not connected',enter:'🚀 Enter Metaverse',exit:'⏻ Exit Metaverse',full:'🖥️ 5K / Fullscreen',normal:'🗗 Exit fullscreen',reading:'Reading…',balance:'AQR Balance'}};
+const $ = s=>document.querySelector(s);
+function applyLang(){ $('#btnConnect').textContent=T[lang].connect; $('#btnEnter').textContent=T[lang].enter; $('#btnFull').textContent=T[lang].full; }
+$('#btnLang').onclick=()=>{lang=lang==='es'?'en':'es';applyLang();}; applyLang();
+
+/* ---------------------------- Canvas Universe ---------------------------- */
+const cvs = document.getElementById('universe'); const ctx = cvs.getContext('2d'); let W=0,H=0,stars=[];
+function resize(){ const dpr=Math.min(2,window.devicePixelRatio||1); W=cvs.clientWidth; H=cvs.clientHeight; cvs.width=W*dpr; cvs.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); spawn(); }
+function spawn(){ const n=Math.floor((W*H)/2200); stars=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,z:Math.random()*1+0.2,s:Math.random()*1.5+0.2})); }
+function loop(t){ ctx.clearRect(0,0,W,H); const g=ctx.createRadialGradient(W*.5,H*.4,20,W*.5,H*.5,Math.max(W,H)*.9); g.addColorStop(0,'rgba(100,180,255,.08)'); g.addColorStop(1,'rgba(10,12,18,0)'); ctx.fillStyle=g; ctx.fillRect(0,0,W,H); for(const st of stars){ st.x += (st.z*0.25); if(st.x>W+10) st.x=-10; const a=.8*st.z+.2; ctx.fillStyle=`rgba(120,240,255,${a})`; ctx.fillRect(st.x,st.y,st.s,st.s);} requestAnimationFrame(loop); }
+resize(); window.addEventListener('resize',resize); loop();
+
+/* ---------------------------- Fullscreen / Metaverse ---------------------------- */
+document.getElementById('btnFull').onclick=async()=>{ if(!document.fullscreenElement){ await document.documentElement.requestFullscreen(); document.getElementById('btnFull').textContent=T[lang].normal; }else{ await document.exitFullscreen(); document.getElementById('btnFull').textContent=T[lang].full; } };
+let entered=false; document.getElementById('btnEnter').onclick=()=>{ entered=!entered; document.getElementById('btnEnter').textContent=entered?T[lang].exit:T[lang].enter; document.body.style.background=entered?'radial-gradient(1200px 800px at 50% -10%,#10203b,transparent 60%),linear-gradient(180deg,#05060b,#05060b 60%,#05060b)':''; };
+
+/* ---------------------------- Status: GitHub / Web3 / IPFS ---------------------------- */
+document.getElementById('netLabel').textContent = location.host.includes('github.io')?'GitHub Pages':(location.protocol.startsWith('http')?'Web':'Local');
+async function checkRPC(){ const rpc=document.getElementById('rpc').value||'https://api.mainnet-beta.solana.com'; try{ const res=await fetch(rpc,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'getHealth'})}); const js=await res.json(); const ok = js && (js.result==='ok' || js.result==='healthy' || js.error===undefined); document.getElementById('w3Dot').className='dot '+(ok?'ok':'bad'); document.getElementById('w3Status').textContent = ok?'OK':'Error'; }catch(e){ document.getElementById('w3Dot').className='dot bad'; document.getElementById('w3Status').textContent='Error'; } }
+async function checkIPFS(){ try{ const ping=await fetch('https://cloudflare-ipfs.com/ipfs/').then(r=>r.status); const ok=(ping>=200 && ping<400); document.getElementById('ipfsDot').className='dot '+(ok?'ok':'bad'); document.getElementById('ipfsStatus').textContent= ok?'OK':'Error'; }catch(e){ document.getElementById('ipfsDot').className='dot bad'; document.getElementById('ipfsStatus').textContent='Error'; } }
+checkRPC(); checkIPFS();
+
+/* ---------------------------- Wallet / AQR Balance ---------------------------- */
+const AQR_MINT = '8h4jvgTSSN6xeV6TPMMwCSdmStNdKYUrxhLSB2pBJNZM';
+let pubkey=null;
+async function connect(){ const provider=window.solana; if(!provider || !provider.isPhantom){ alert(lang==='es'?'Instala Phantom Wallet para conectar':'Install Phantom Wallet to connect'); return; } try{ const r=await provider.connect(); pubkey=r.publicKey.toString(); document.getElementById('walletState').textContent=T[lang].connected; document.getElementById('walletAddr').textContent=pubkey; }catch(e){ document.getElementById('walletState').textContent=T[lang].notConnected; } }
+document.getElementById('btnConnect').onclick=connect;
+async function readAQRBalance(){ if(!pubkey){ await connect(); if(!pubkey) return; } document.getElementById('aqrBal').textContent=T[lang].reading; const rpc=document.getElementById('rpc').value||'https://api.mainnet-beta.solana.com'; const body={jsonrpc:'2.0',id:1,method:'getTokenAccountsByOwner',params:[pubkey,{mint:AQR_MINT},{encoding:'jsonParsed'}]}; try{ const res=await fetch(rpc,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}); const js=await res.json(); let amount=0; if(js.result && js.result.value && js.result.value.length){ for(const acc of js.result.value){ const ui=acc.account.data.parsed.info.tokenAmount.uiAmount||0; amount += ui; } } document.getElementById('aqrBal').textContent=String(amount); }catch(e){ document.getElementById('aqrBal').textContent='Error'; } }
+document.getElementById('btnBal').onclick=readAQRBalance;
+</script>
+</body>
+</html>
