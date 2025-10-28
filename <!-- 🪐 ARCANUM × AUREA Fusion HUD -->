@@ -1,0 +1,8 @@
+<!-- 🔮 ARCANUM × AUREA Fusion HUD -->
+<section id="status-hud" style="text-align:center;margin-top:40px;">
+  <p id="ipfs-status">🔴 IPFS Desconectado</p>
+  <p id="wallet-status">🔴 Wallet no conectada</p>
+  <button id="connect-wallet" style="padding:10px 24px;border:none;border-radius:6px;background:#00bfff;color:white;cursor:pointer;font-size:15px;">Conectar Wallet</button>
+</section>
+
+<script src="fusion-engine.js"></script>
