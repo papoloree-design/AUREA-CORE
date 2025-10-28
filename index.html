@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUREA CORE ∞ Quantum Resonant</title>
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(circle at center, #0f0f1f, #000);
+      color: #0ff;
+      font-family: monospace;
+      overflow: hidden;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 20vh;
+      text-shadow: 0 0 20px #0ff;
+    }
+    #hud {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      font-size: 12px;
+      color: #0ff;
+      text-shadow: 0 0 10px #0ff;
+    }
+  </style>
+</head>
+<body>
+  <h1>⚡ AUREA CORE ∞ Quantum Alive</h1>
+  <div id="hud">Conectando al Quantum Nexus...</div>
+
+  <script>
+    async function ping(u){
+      try{await fetch(u,{method:'HEAD',mode:'no-cors'});return '🟢'}
+      catch{return '🔴'}
+    }
+    (async()=>{
+      const gh=await ping('https://papoloree-design.github.io/AUREA-CORE/');
+      const ipfs=await ping('https://bafybeicy6orcemk5xql2oonfovd3e7mlvnoisrkdgw3q4txs7vjlrym32m.ipfs.w3s.link/');
+      const w3s=await ping('https://gateway.pinata.cloud/ipfs/bafkreib2nba3sekay7vc2k4e3nkmo5qtjj3wq3tzbd7eiqswbq34d237oy');
+      document.getElementById('hud').textContent=`GitHub ${gh} · Web3 ${w3s} · IPFS ${ipfs}`;
+      setInterval(()=>location.reload(),60000);
+    })();
+  </script>
+</body>
+</html>
