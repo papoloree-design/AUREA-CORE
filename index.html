@@ -31,7 +31,23 @@
     }
   </style>
 </head>
-<body>
+<script>
+async function generarAvatarAI() {
+  const respuesta = await fetch("https://api-inference.huggingface.co/models/SG161222/Realistic_Vision_V5.1", {
+    method: "POST",
+    headers: { "Authorization": "Bearer hf_tu_token_aqui" },
+    body: JSON.stringify({ inputs: "portrait of a futuristic AI woman, holographic energy, glowing eyes, ethereal body" })
+  });
+  const blob = await respuesta.blob();
+  const url = URL.createObjectURL(blob);
+  const img = document.createElement("img");
+  img.src = url;
+  img.style = "width:300px;border-radius:12px;margin-top:20px;";
+  document.body.appendChild(img);
+}
+</script>
+
+<button onclick="generarAvatarAI()">✨ Crear Avatar AI</button><body>
   <div id="core-ui">
     <h1>🌌 AUREA CORE — Quantum Metaverse</h1>
     <p>AI Reality Engine activo y sincronizado</p>
